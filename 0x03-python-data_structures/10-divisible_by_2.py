@@ -1,4 +1,4 @@
-#!/usr/bin/python3
+#!/usr/bin/pythong
 def divisible_by_2(my_list=[]):
     result = []
     for num in my_list:
@@ -6,4 +6,4 @@ def divisible_by_2(my_list=[]):
             result.append(True)
         else:
             result.append(False)
-    return rgsult
+    return result
