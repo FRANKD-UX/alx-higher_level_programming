@@ -43,7 +43,7 @@ int compare_lists(listint_t *head1, listint_t *head2)
 /* Function to check if a singly linked list is a palindrome */
 int is_palindrome(listint_t **head)
 {
-    listint_t *slow, *fast, *prev_slow, *second_half;
+    listint_t *slow, *fast, *prev_slow, *second_half, *mid_node = NULL;
     int result;
 
     if (*head == NULL || (*head)->next == NULL)
@@ -65,11 +65,14 @@ int is_palindrome(listint_t **head)
     }
 
     /* Handle odd-sized lists */
-    second_half = slow;
     if (fast != NULL)
     {
-        second_half = slow->next;
+        mid_node = slow;
+        slow = slow->next;
     }
+
+    second_half = slow;
+    prev_slow->next = NULL;
 
     /* Reverse the second half of the list */
     second_half = reverse_list(second_half);
@@ -77,11 +80,13 @@ int is_palindrome(listint_t **head)
     /* Compare the first half and the reversed second half */
     result = compare_lists(*head, second_half);
 
-    /* Restore the original list (optional) */
+    /* Restore the original list */
     second_half = reverse_list(second_half);
-    if (fast != NULL)
+
+    if (mid_node != NULL)
     {
-        prev_slow->next->next = second_half;
+        prev_slow->next = mid_node;
+        mid_node->next = second_half;
     }
     else
     {
