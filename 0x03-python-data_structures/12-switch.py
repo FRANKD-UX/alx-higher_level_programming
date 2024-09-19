@@ -1,6 +1,5 @@
 #!/usr/bin/python3
-a = 5
+a = 89
 b = 10
-temp = a  # Use a temporary variable to hold the value of a
-a = b
-b = temp
+a, b = b, a  # Swap the values of a and b
+print("a={:d} - b={:d}".format(a, b))
