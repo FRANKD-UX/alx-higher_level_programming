@@ -1,24 +1,15 @@
 #!/usr/bin/python3
 def search_replace(my_list, search, replace):
-    # Create a new list to store the modified elements
-    new_list = []
+    """
+    Replaces all occurrences of an element in a list with a new element.
 
-    # Iterate through each element in the original list
-    for element in my_list:
-        # If the element matches the search value, append the replace value
-        if element == search:
-            new_list.append(replace)
-        else:
-            # Otherwise, append the original element
-            new_list.append(element)
+    Args:
+        my_list (list): The initial list.
+        search: The element to replace.
+        replace: The new element to replace the search element with.
 
-    return new_list
-
-
-# Example usage:
-if __name__ == "__main__":
-    my_list = [1, 2, 3, 2, 4, 2, 5]
-    search = 2
-    replace = 9
-
-print(search_replace(my_list, search, replace))
+    Returns:
+        list: A new list with the replaced elements.
+    """
+    # Use list comprehension to create a new list with replacements
+    return [replace if element == search else element for element in my_list]
