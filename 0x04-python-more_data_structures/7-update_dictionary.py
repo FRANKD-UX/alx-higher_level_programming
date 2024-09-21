@@ -1,15 +1,13 @@
 #!/usr/bin/python3
-def update_dictionary(a_dictionary, key, value):
+def print_sorted_dictionary(a_dictionary):
     """
-    Replaces or adds a key/value pair in the dictionary.
+    Prints a dictionary with keys sorted in alphabetical order.
 
     Args:
-        a_dictionary (dict): The input dictionary.
-        key (str): The key to be updated or added.
-        value: The value associated with the key.
+        a_dictionary (dict): The input dictionary with string keys.
 
     Returns:
         None
     """
-    # Update or add the key/value pair in the dictionary
-    a_dictionary[key] = value
+    for key in sorted(a_dictionary):
+        print(f"{key}: {a_dictionary[key]}")
