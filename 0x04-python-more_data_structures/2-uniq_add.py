@@ -5,7 +5,7 @@ def uniq_add(my_list=[]):
 
     Args:
         my_list (list): The input list of integers.
-    
+
     Returns:
         int: The sum of unique integers from the list.
     """
