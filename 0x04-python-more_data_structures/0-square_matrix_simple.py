@@ -15,4 +15,4 @@ def square_matrix_simple(matrix=[]):
         # Append the new row to the new matrix
         new_matrix.append(new_row)
 
-    return new_matrig
+    return new_matrix
