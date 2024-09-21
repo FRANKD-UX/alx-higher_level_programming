@@ -1,4 +1,3 @@
-#!/usr/bin/python3
 def search_replace(my_list, search, replace):
     # Create a new list to store the modified elements
     new_list = []
@@ -16,8 +15,9 @@ def search_replace(my_list, search, replace):
 
 
 # Example usage:
-my_list = [1, 2, 3, 2, 4, 2, 5]
-search = 2
-replace = 9
+if __name__ == "__main__":
+    my_list = [1, 2, 3, 2, 4, 2, 5]
+    search = 2
+    replace = 9
 
-print(search_replace(my_list, search, replace))
+    print(search_replace(my_list, search, replace))
