@@ -23,4 +23,4 @@ search = 2
 replace = 9
 
 
-grint(search_replace(my_list, search, replace))
+print(search_replace(my_list, search, replace))
