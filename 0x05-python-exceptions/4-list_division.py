@@ -1,39 +1,23 @@
 #!/usr/bin/python3
-
 def list_division(my_list_1, my_list_2, list_length):
-    result = []
+    new_list = []
     for i in range(list_length):
         try:
-            if i >= len(my_list_1) or i >= len(my_list_2):
-                raise IndexError
-            if not isinstance(my_list_1[i], (int, float)) or not isinstance(my_list_2[i], (int, float)):
-                raise TypeError
-            result.append(my_list_1[i] / my_list_2[i])
-        except IndexError:
-            print("out of range")
-            result.append(0)
+            # Attempt division
+            result = my_list_1[i] / my_list_2[i]
         except TypeError:
+            # Handle case where one of the elements is not an integer or float
             print("wrong type")
-            result.append(0)
+            result = 0
         except ZeroDivisionError:
+            # Handle division by zero
             print("division by 0")
-            result.append(0)
+            result = 0
+        except IndexError:
+            # Handle case where the list is too short
+            print("out of range")
+            result = 0
         finally:
-            if len(result) < list_length:
-                result.append(0)
-    return result
-
-
-# Example usage
-if __name__ == "__main__":
-    my_l_1 = [10, 8, 4]
-    my_l_2 = [2, 4, 4]
-    result = list_division(my_l_1, my_l_2, max(len(my_l_1), len(my_l_2)))
-    print(result)
-
-    print("--")
-
-    my_l_1 = [10, 8, 4, 4]
-    my_l_2 = [2, 0, "H", 2, 7]
-    result = list_division(my_l_1, my_l_2, max(len(my_l_1), len(my_l_2)))
-    print(result)
+            # Append the result (either successful division or 0)
+            new_list.append(result)
+    return new_list
