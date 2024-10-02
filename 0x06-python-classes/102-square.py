@@ -1,3 +1,9 @@
+#!usr/bin/python3
+"""
+This module defines a class Square
+"""
+
+
 class Square:
     def __init__(self, size=0):
         self.size = size  # Use the property setter to initialize size
@@ -43,4 +49,3 @@ class Square:
     def __ge__(self, other):
         """Compare if the area of this square is greater than or equal to the other."""
         return self.area() >= other.area()
-
