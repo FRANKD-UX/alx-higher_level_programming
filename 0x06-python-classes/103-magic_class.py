@@ -1,15 +1,20 @@
 import math
 
-
 class MagicClass:
     def __init__(self, radius=0):
-        self._MagicClass__radius = 0
+        # Set the radius to 0 by default
+        self.__radius = 0
+        
+        # Check if the radius is a number
         if type(radius) is not int and type(radius) is not float:
             raise TypeError('radius must be a number')
-        self._MagicClass__radius = radius
+        
+        self.__radius = radius
 
     def area(self):
-        return self._MagicClass__radius ** 2 * math.pi
+        """Return the area of the circle."""
+        return self.__radius ** 2 * math.pi
 
     def circumference(self):
-        return 2 * math.pi * self._MagicClass__radius
+        """Return the circumference of the circle."""
+        return 2 * math.pi * self.__radius
