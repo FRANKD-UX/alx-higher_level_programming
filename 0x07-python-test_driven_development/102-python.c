@@ -6,27 +6,21 @@
  * @p: A PyObject pointer to the Python string object.
  *
  * If the object is not a string, it prints an error message.
- * If the string cannot be decoded, it also prints an error message.
+ * If the string is compact ASCII or Unicode, it prints the length and value.
  */
 void print_python_string(PyObject *p)
 {
-	if (!PyUnicode_Check(p))
-	{
-		printf("Error: Invalid String Object\n");
-		return;
-	}
-
-	Py_ssize_t size;
-	const char *str;
-
-	str = PyUnicode_AsUTF8AndSize(p, &size);
-	if (str == NULL)
-	{
-		printf("Error: Unable to decode String Object\n");
-		return;
-	}
+	long int length;
 
 	printf("[.] string object info\n");
+	if (!PyUnicode_Check(p))
+	{
+		printf("  [ERROR] Invalid String Object\n");
+		return;
+	}
+
+	length = PyUnicode_GET_LENGTH(p);
+
 	printf("  type: ");
 	if (PyUnicode_IS_COMPACT_ASCII(p))
 	{
@@ -37,7 +31,7 @@ void print_python_string(PyObject *p)
 		printf("compact unicode object\n");
 	}
 
-	printf("  length: %ld\n", size);
-	printf("  value: %s\n", str);
+	printf("  length: %ld\n", length);
+	printf("  value: %ls\n", PyUnicode_AsWideCharString(p, NULL));
 }
 
