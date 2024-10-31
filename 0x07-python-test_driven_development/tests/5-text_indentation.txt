@@ -1,0 +1,34 @@
+>>> from 5_text_indentation import text_indentation
+>>> text_indentation("Hello. How are you? I hope you're doing well:")
+Hello.
+
+How are you?
+
+I hope you're doing well:
+
+>>> text_indentation("This is a test: with punctuation.")
+This is a test:
+
+with punctuation.
+
+>>> text_indentation("Multiple? Spaces after punctuation.    Check this out: done!")
+Multiple?
+
+Spaces after punctuation.
+
+Check this out:
+
+done!
+
+>>> text_indentation("")
+>>> # No output should be produced, just an empty line
+
+>>> text_indentation(123)
+Traceback (most recent call last):
+    ...
+TypeError: text must be a string
+
+>>> text_indentation(None)
+Traceback (most recent call last):
+    ...
+TypeError: text must be a string
