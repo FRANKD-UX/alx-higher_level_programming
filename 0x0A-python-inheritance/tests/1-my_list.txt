@@ -1,0 +1,33 @@
+>>> import importlib.util
+>>> spec = importlib.util.spec_from_file_location("MyList", "./1-my_list.py")
+>>> module = importlib.util.module_from_spec(spec)
+>>> spec.loader.exec_module(module)
+>>> MyList = module.MyList
+
+# Test 1: Regular list with integers
+>>> my_list = MyList([3, 1, 4, 1, 5, 9, 2])
+>>> my_list.print_sorted()
+[1, 1, 2, 3, 4, 5, 9]
+>>> print(my_list)
+[3, 1, 4, 1, 5, 9, 2]
+
+# Test 2: Append an element and check print_sorted()
+>>> my_list.append(6)
+>>> print(my_list)  # Check if 6 is added to the original list
+[3, 1, 4, 1, 5, 9, 2, 6]
+>>> my_list.print_sorted()  # Check sorted order including appended element
+[1, 1, 2, 3, 4, 5, 6, 9]
+
+# Test 3: Test with negative numbers
+>>> my_list_negative = MyList([-1, -5, 3, 0])
+>>> my_list_negative.print_sorted()
+[-5, -1, 0, 3]
+>>> print(my_list_negative)  # Original list remains unchanged
+[-1, -5, 3, 0]
+
+# Test 4: Test with an empty list
+>>> empty_list = MyList([])
+>>> empty_list.print_sorted()  # Should print an empty list
+[]
+>>> print(empty_list)  # Confirm list is still empty
+[]

@@ -1,0 +1,18 @@
+#!/usr/bin/python3
+import numpy as np
+lazy_matrix_mul = __import__('101-lazy_matrix_mul').lazy_matrix_mul
+
+# Define test matrices
+matrix_a = [[1, 2], [3, 4]]
+matrix_b = [[5, 6], [7, 8]]
+
+# Multiply matrices
+result = lazy_matrix_mul(matrix_a, matrix_b)
+
+# Print results
+print("Matrix A:")
+print(np.array(matrix_a))
+print("Matrix B:")
+print(np.array(matrix_b))
+print("Result of lazy_matrix_mul:")
+print(np.array(result))

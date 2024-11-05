@@ -1,6 +1,8 @@
 #!/usr/bin/python3
 """
-This module defines a Rectangle class with width and height attributes.
+This module defines a Rectangle class with width and height attributes,
+methods to calculate the area and perimeter, and functionality to print
+and recreate the rectangle. It also includes a destructor.
 """
 
 
@@ -36,3 +38,22 @@ class Rectangle:
         if value < 0:
             raise ValueError("height must be >= 0")
         self.__height = value
+
+    def area(self):
+        return self.__width * self.__height
+
+    def perimeter(self):
+        if self.__width == 0 or self.__height == 0:
+            return 0
+        return 2 * (self.__width + self.__height)
+
+    def __str__(self):
+        if self.__width == 0 or self.__height == 0:
+            return ""
+        return "\n".join(["#" * self.__width for _ in range(self.__height)])
+
+    def __repr__(self):
+        return f"Rectangle({self.__width}, {self.__height})"
+
+    def __del__(self):
+        print("Bye rectangle...")
