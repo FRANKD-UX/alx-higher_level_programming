@@ -1,4 +1,4 @@
 -- Task: List all databases
+-- This script lists all databases in the MySQL server
 
--- Use the MySQL SHOW DATABASES statement to list all databases
 SHOW DATABASES;
