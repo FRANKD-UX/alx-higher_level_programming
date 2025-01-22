@@ -1,3 +1,14 @@
+#!/usr/bin/python3
+"""
+Script to list all states from a MySQL database.
+
+Prompts the user for MySQL username, password, and database name.
+Connects to the database and retrieves all states ordered by ID.
+Prints each state information (ID and name).
+
+Requires MySQLdb library (version 2.0.x).
+"""
+
 import MySQLdb
 
 username = input("Enter MySQL username: ")
