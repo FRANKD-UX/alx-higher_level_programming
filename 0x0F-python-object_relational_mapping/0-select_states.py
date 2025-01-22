@@ -1,38 +1,37 @@
 #!/usr/bin/python3
 """
-Script to list all states from a MySQL database.
-
-Prompts the user for MySQL username, password, and database name.
-Connects to the database and retrieves all states ordered by ID.
-Prints each state information (ID and name).
-
-Requires MySQLdb library (version 2.0.x).
+Lists all states from the database hbtn_0e_0_usa.
 """
 
 import MySQLdb
+import sys
 
-username = input("Enter MySQL username: ")
-password = input("Enter MySQL password: ")
-database_name = input("Enter database name: ")
+if __name__ == "__main__":
+    # Get MySQL credentials and database name from command-line arguments
+    username = sys.argv[1]
+    password = sys.argv[2]
+    database = sys.argv[3]
 
-try:
-    connection = MySQLdb.connect(host="localhost", user=username, passwd=password, db=database_name, port=3306)
-    cursor = connection.cursor()
+    # Connect to the MySQL server
+    db = MySQLdb.connect(
+        host="localhost",
+        port=3306,
+        user=username,
+        passwd=password,
+        db=database
+    )
 
-    # Execute query to select all states ordered by id
-    cursor.execute("SELECT * FROM states ORDER BY states.id ASC")
+    # Create a cursor object to interact with the database
+    cursor = db.cursor()
 
-    # Fetch all results
-    results = cursor.fetchall()
+    # Execute the query to select all states sorted by id
+    cursor.execute("SELECT * FROM states ORDER BY id ASC")
 
-    # Print results
-    for row in results:
-        print(row)
+    # Fetch all the results and print them
+    states = cursor.fetchall()
+    for state in states:
+        print(state)
 
-except MySQLdb.Error as err:
-    print("Error: {}".format(err))
-
-finally:
-    # Close connection
-    if connection:
-        connection.close()
+    # Close the cursor and database connection
+    cursor.close()
+    db.close()
