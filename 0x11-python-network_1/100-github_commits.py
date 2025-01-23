@@ -1,5 +1,6 @@
 #!/usr/bin/python3
-"""Lists 10 commits from a given repository by a given user using the GitHub API"""
+"""Lists 10 commits from a given repository
+by a given user using the GitHub API"""
 
 import requests
 import sys
