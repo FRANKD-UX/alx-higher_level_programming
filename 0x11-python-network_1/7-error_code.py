@@ -7,7 +7,7 @@ import sys
 
 
 def fetch_url(url):
-    """Fetches and displays the body of the 
+    """Fetches and displays the body of the
     response or an error code"""
     response = requests.get(url)
     if response.status_code >= 400:
