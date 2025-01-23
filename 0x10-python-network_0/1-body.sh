@@ -1,3 +1,3 @@
 #!/bin/bash
-# Fetches the body of a response only for 200 status code
-curl -s "$1" | grep -E '^HTTP/.* 200' | cut -d ' ' -f 4-
+# Fetches the body of a 200 status response
+curl -sL -o /dev/null -w "%{http_code}" "$1" | grep -q 200 && curl -sL "$1"
